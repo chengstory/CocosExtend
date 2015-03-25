@@ -25,20 +25,20 @@ using System.Runtime.InteropServices;
 namespace CocoStudio.Model.ExtensionModel
 {
     /// <summary>
-    /// 自定义序列化器
+    /// Custom Serializer
     /// </summary>
     [Extension(typeof(IGameProjectSerializer))]
     public class FlatBuffersSerializer : IGameProjectSerializer
     {
         public string ID
         {
-            get { return "CustomFB"; }
+            get { return "CustomSer"; }
         }
 
-        //显示在编辑器-〉项目设置-〉发布-〉自定义下拉框
+        //Project->Project Setting...->Publish->Custom
         public string Label
         {
-            get { return "CustomFlatBuffers"; }
+            get { return "CustomSerializer"; }
         }
 
         public FlatBuffersSerializer()
@@ -54,21 +54,21 @@ namespace CocoStudio.Model.ExtensionModel
         /// <returns>error info</returns>
         public string Serialize(PublishInfo info, IProjectFile projFile)
         {
-            //csd路径
+            //csd fullpath
             string src = info.SourceFilePath;
-            //转换以后文件的路径
+            //des fullpath
             FilePath desFilePath = info.DestinationFilePath;
-            //当前项目的资源路径
+            //resources fullpath
             string res = Services.ProjectOperations.CurrentSelectedSolution.ItemDirectory;
 
-            //调用转换的代码可以写在这里
+            //serialize code
 
-            return string.Empty;
+            return "";
         }
 
 
         /// <summary>
-        /// 在序列化之前调用
+        /// ContextInitialize is called before Serialize
         /// </summary>
         public void ContextInitialize(PublishInfo publishInfo)
         {
@@ -76,7 +76,7 @@ namespace CocoStudio.Model.ExtensionModel
         }
 
         /// <summary>
-        /// 序列化之后调用
+        /// ContextInitialize is called after Serialize
         /// </summary>
         public void ContextFinalize(PublishInfo publishInfo)
         {
