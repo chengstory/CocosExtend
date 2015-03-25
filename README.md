@@ -1,2 +1,1 @@
-# CocosExtend
-Cocos Publish Extend
+#CocosExtend
